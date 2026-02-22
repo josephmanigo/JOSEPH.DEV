@@ -81,7 +81,7 @@ export function Navbar() {
               <Github size={18} />
             </a>
             <a
-              href="https://www.instagram.com/not.josph/"
+              href="https://www.instagram.com/jsph.mng"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground hover:scale-110 hover:-translate-y-0.5 transition-all duration-300"
@@ -159,7 +159,7 @@ export function Navbar() {
                 <Github size={20} />
               </a>
               <a
-                href="https://www.instagram.com/not.josph/"
+                href="https://www.instagram.com/jsph.mng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors duration-200"
