@@ -18,7 +18,7 @@ export default function Home() {
     <>
       {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
       <main
-        className={`min-h-screen relative z-10 ${isLoading ? "opacity-0" : "opacity-100"} transition-opacity duration-500`}
+        className="min-h-screen relative z-10"
       >
         <BackgroundRays />
         <Navbar />

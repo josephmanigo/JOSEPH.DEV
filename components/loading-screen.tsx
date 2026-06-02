@@ -1,110 +1,78 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Github, Code2, Terminal, Braces, FileCode, Database, Cpu, Globe } from "lucide-react"
-import { BackgroundRays } from "@/components/background-rays"
+import { motion } from "framer-motion"
 
 export function LoadingScreen({ onLoadingComplete }: { onLoadingComplete: () => void }) {
-  const [isVisible, setIsVisible] = useState(true)
+  const [isExiting, setIsExiting] = useState(false)
 
   useEffect(() => {
+    // Show loader for 2.2 seconds, then trigger exit transition
     const timer = setTimeout(() => {
-      setIsVisible(false)
-      setTimeout(onLoadingComplete, 500)
-    }, 3000)
+      setIsExiting(true)
+      // Call parent onLoadingComplete after the slide up transition finishes
+      const exitTimer = setTimeout(() => {
+        onLoadingComplete()
+      }, 900) // matches transition duration (0.85s) + buffer
+      return () => clearTimeout(exitTimer)
+    }, 2200)
 
     return () => clearTimeout(timer)
   }, [onLoadingComplete])
 
-  const icons = [
-    { Icon: Github, delay: 0 },
-    { Icon: Code2, delay: 0.1 },
-    { Icon: Terminal, delay: 0.2 },
-    { Icon: Braces, delay: 0.3 },
-    { Icon: FileCode, delay: 0.4 },
-    { Icon: Database, delay: 0.5 },
-    { Icon: Cpu, delay: 0.6 },
-    { Icon: Globe, delay: 0.7 },
-  ]
-
   return (
-    <AnimatePresence>
-      {isVisible && (
+    <motion.div
+      initial={{ y: "0%" }}
+      animate={{ y: isExiting ? "-100%" : "0%" }}
+      transition={{
+        duration: 0.85,
+        ease: [0.76, 0, 0.24, 1], // Custom premium ease (power4.inOut equivalent)
+      }}
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#080808] text-white select-none overflow-hidden"
+    >
+      {/* Main Title Center Block - Stacked vertically */}
+      <div className="relative flex flex-col items-center justify-center text-center">
+        {/* JOSEPH */}
         <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.25, 1, 0.5, 1], // Deceleration curve
+            delay: 0.2,
+          }}
+          className="text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter font-serif text-white leading-none"
         >
-          <BackgroundRays />
-
-          {/* Coding Icons */}
-          <div className="flex gap-4 mb-12 relative z-10">
-            {icons.map(({ Icon, delay }, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay,
-                  duration: 0.5,
-                  ease: "easeOut",
-                }}
-              >
-                <motion.div
-                  animate={{
-                    y: [0, -8, 0],
-                  }}
-                  transition={{
-                    delay: delay + 0.5,
-                    duration: 1.5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <Icon className="w-8 h-8 text-gray-400" />
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Welcome Text */}
-          <div className="text-center relative z-10">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-300 via-gray-100 to-gray-400 bg-clip-text text-transparent"
-            >
-              Welcome To
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-              className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-300 via-gray-100 to-gray-400 bg-clip-text text-transparent mt-2"
-            >
-              JOSEPH.DEV
-            </motion.h1>
-          </div>
-
-          {/* Loading Bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="mt-12 w-64 h-1 bg-gray-800 rounded-full overflow-hidden relative z-10"
-          >
-            <motion.div
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ delay: 1.4, duration: 1.5, ease: "easeInOut" }}
-              className="h-full bg-gradient-to-r from-gray-500 via-gray-300 to-gray-500 rounded-full"
-            />
-          </motion.div>
+          JOSEPH.
         </motion.div>
-      )}
-    </AnimatePresence>
+
+        {/* DEV (Under JOSEPH, bigger) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.25, 1, 0.5, 1],
+            delay: 0.4,
+          }}
+          className="text-3xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-[0.25em] font-sans text-white/50 mt-2 md:mt-4 leading-none"
+        >
+          DEV
+        </motion.div>
+      </div>
+
+      {/* Bottom Motto Text */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.7,
+        }}
+        className="absolute bottom-12 font-sans text-xs md:text-sm font-bold tracking-[0.4em] uppercase text-white/90"
+      >
+        DRIVEN BY CODE
+      </motion.div>
+    </motion.div>
   )
 }
