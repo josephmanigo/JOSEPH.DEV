@@ -10,7 +10,7 @@ const projects = [
     title: "Payroll Management",
     description:
       "A full-featured payroll management system built with Next.js for handling employee records, automated salary computation, tax deductions, department-level analytics, and payroll history tracking.",
-    image: "/images/payroll-management.png",
+    image: "/payroll.png",
     video: null,
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
     features: ["Employee Records & CRUD", "Automated Salary Computation", "Department Analytics Charts", "Payroll History & Audit Logs"],
@@ -94,7 +94,7 @@ const projects = [
     title: "Smartbin",
     description:
       "An IoT-powered smart waste management dashboard with user authentication. Sign in to monitor real-time trash bin fill levels, receive instant alerts when bins are full, and view waste collection analytics on a clean, data-driven interface.",
-    image: "/images/smart-bin.png",
+    image: "/smartbin.png",
     video: null,
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "IoT"],
     features: ["User Authentication & Login", "Real-time Bin Level Monitoring", "Full Bin Alert Notifications", "Waste Analytics Dashboard"],
@@ -130,7 +130,7 @@ const projects = [
     title: "crosshere",
     description:
       "A real-time healthcare emergency management platform designed for schools and institutions. Features user authentication, role-based dashboards, emergency SOS alerts, medical symptom reporting, digital health cards, and clinic queue management. Developed by Quan Technologies.",
-    image: "/images/crosshere.png",
+    image: "/crosshere.png",
     video: null,
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI"],
     features: ["Role-Based Auth & Dashboards", "Real-time SOS Emergency Alerts", "Medical Symptom Reporting", "Digital Health Cards & Clinic Queue"],
