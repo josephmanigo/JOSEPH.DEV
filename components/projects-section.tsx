@@ -217,10 +217,16 @@ function AnimatedFlipCard({
 
   useEffect(() => {
     if (isInView) {
-      setAnimationDirection(scrollDirection)
-      controls.start("visible")
+      if (scrollDirection === "down") {
+        setAnimationDirection(scrollDirection)
+        controls.start("visible")
+      } else {
+        controls.set("visible")
+      }
     } else {
-      controls.start("hidden")
+      if (scrollDirection === "down") {
+        controls.start("hidden")
+      }
     }
   }, [isInView, controls])
 
@@ -422,19 +428,31 @@ export function ProjectsSection() {
 
   useEffect(() => {
     if (isInView) {
-      setAnimationDirection(scrollDirection)
-      controls.start("visible")
+      if (scrollDirection === "down") {
+        setAnimationDirection(scrollDirection)
+        controls.start("visible")
+      } else {
+        controls.set("visible")
+      }
     } else {
-      controls.start("hidden")
+      if (scrollDirection === "down") {
+        controls.start("hidden")
+      }
     }
   }, [isInView, controls])
 
   useEffect(() => {
     if (headerInView) {
-      setAnimationDirection(scrollDirection)
-      headerControls.start("visible")
+      if (scrollDirection === "down") {
+        setAnimationDirection(scrollDirection)
+        headerControls.start("visible")
+      } else {
+        headerControls.set("visible")
+      }
     } else {
-      headerControls.start("hidden")
+      if (scrollDirection === "down") {
+        headerControls.start("hidden")
+      }
     }
   }, [headerInView, headerControls])
 

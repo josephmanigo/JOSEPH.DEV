@@ -45,10 +45,17 @@ export function AboutSection() {
 
   useEffect(() => {
     if (headerInView) {
-      setAnimationDirection(scrollDirection)
-      headerControls.start("visible")
+      if (scrollDirection === "down") {
+        setAnimationDirection(scrollDirection)
+        headerControls.start("visible")
+      } else {
+        // Scrolling up — show immediately without animation
+        headerControls.set("visible")
+      }
     } else {
-      headerControls.start("hidden")
+      if (scrollDirection === "down") {
+        headerControls.start("hidden")
+      }
     }
   }, [headerInView, headerControls, scrollDirection])
 
@@ -130,14 +137,14 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           className="flex flex-col items-center gap-8 md:gap-12 lg:gap-16 mb-12 md:mb-16 lg:flex-row justify-center"
         >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             className="text-center lg:text-left flex-1 mx-2.5 max-w-2xl order-2 lg:order-1"
           >
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-foreground">
@@ -147,7 +154,7 @@ export function AboutSection() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   className="inline-block"
                   whileHover={{
                     scale: 1.2,
@@ -165,7 +172,7 @@ export function AboutSection() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <span className="inline-block">{displayText}</span>
               <motion.span
@@ -180,7 +187,7 @@ export function AboutSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               {
                 "I'm a third-year BSIT student from Davao City, Philippines, specializing in UI/UX and front-end development. I build clean, modern, and user-focused web experiences using TypeScript, React, and Next.js. My work combines thoughtful design with reliable performance, ensuring every interface is intuitive, responsive, and visually engaging. I'm dedicated to continuous improvement, refining my craft through new tools, best practices, and emerging trends in modern web development."
