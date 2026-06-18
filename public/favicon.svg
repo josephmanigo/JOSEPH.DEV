@@ -1,7 +1,0 @@
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <!-- Black Background -->
-  <rect width="32" height="32" fill="#000000" />
-  
-  <!-- White Letter J -->
-  <text x="50%" y="50%" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central">J</text>
-</svg>
