@@ -28,7 +28,7 @@ const projects = [
     features: ["Full Beverage Menu Catalog", "Store Location & Map Info", "Brand Story & Blog", "Mobile-First Responsive Layout"],
     link: "https://josephmanigo.github.io/Don-Mac/donmac/",
     github: "https://github.com/josephmanigo/Don-Mac",
-    featured: true,
+    featured: false,
   },
   {
     title: "Nightraid BG",
