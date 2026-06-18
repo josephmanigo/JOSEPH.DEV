@@ -108,25 +108,6 @@ export function AboutSection() {
     if (element) element.scrollIntoView({ behavior: "smooth" })
   }
 
-  const [rotateX, setRotateX] = useState(0)
-  const [rotateY, setRotateY] = useState(0)
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = e.currentTarget
-    const rect = el.getBoundingClientRect()
-    const x = e.clientX - rect.left - rect.width / 2
-    const y = e.clientY - rect.top - rect.height / 2
-    // Limit rotation to max 15 degrees
-    const rx = -(y / (rect.height / 2)) * 15
-    const ry = (x / (rect.width / 2)) * 15
-    setRotateX(rx)
-    setRotateY(ry)
-  }
-
-  const handleMouseLeave = () => {
-    setRotateX(0)
-    setRotateY(0)
-  }
 
   return (
     <section id="about" className="py-16 md:py-24 lg:py-32">
@@ -244,57 +225,26 @@ export function AboutSection() {
             transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            {/* 3D Mascot Floating Container */}
+            {/* Mascot Container */}
             <div 
               className="relative w-[280px] sm:w-[350px] md:w-[380px] aspect-[2/3] flex flex-col items-center justify-center select-none"
-              style={{ perspective: "1000px" }}
             >
-              {/* Interactive Tilt Wrapper */}
-              <motion.div
-                className="relative z-10 w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                animate={{
-                  rotateX: rotateX,
-                  rotateY: rotateY,
-                }}
-                transition={{ type: "spring", stiffness: 150, damping: 15 }}
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
-              >
-                {/* Glow behind the mascot inside the tilt container */}
-                <div 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-blue-500/10 rounded-full blur-[80px]" 
-                  style={{ transform: "translateZ(-20px)" }}
-                />
-                <div 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-purple-500/10 rounded-full blur-[60px]" 
-                  style={{ transform: "translateZ(-10px)" }}
-                />
+              {/* Glow behind the mascot */}
+              <div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-blue-500/10 rounded-full blur-[80px]" 
+              />
+              <div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-purple-500/10 rounded-full blur-[60px]" 
+              />
 
-                {/* Floating mascot image */}
-                <motion.div
-                  className="w-full h-full flex items-center justify-center"
-                  animate={{
-                    y: [0, -15, 0],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    repeatType: "mirror",
-                    ease: "easeInOut",
-                  }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <img
-                    src="/images/mascot.png"
-                    alt="Joseph Mascot"
-                    className="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-                    style={{ transform: "translateZ(40px)" }}
-                  />
-                </motion.div>
-              </motion.div>
+              {/* Mascot image */}
+              <div className="w-full h-full flex items-center justify-center">
+                <img
+                  src="/images/mascot.png"
+                  alt="Joseph Mascot"
+                  className="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                />
+              </div>
             </div>
           </motion.div>
         </motion.div>
