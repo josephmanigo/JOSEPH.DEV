@@ -476,10 +476,6 @@ export function ContactSection() {
                   animate={controls}
                   className="relative p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col items-center justify-center bg-gradient-to-br from-primary/5 to-accent/5 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] overflow-hidden rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none"
                 >
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 text-center z-10">Tech Stack</h3>
-                  <p className="text-xs sm:text-sm text-muted-foreground text-center mb-4 sm:mb-6 z-10">
-                    Technologies I work with
-                  </p>
                   <div className="w-full h-full flex items-center justify-center flex-1 z-10">
                     <IconCloud iconSlugs={techStackSlugs} />
                   </div>

@@ -21,8 +21,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Joseph Manigo",
-    template: "%s | Joseph Manigo",
+    default: "JOSEPH.DEV",
+    template: "%s | JOSEPH.DEV",
   },
   description:
     "Portfolio of Joseph Manigo — a UI/UX designer and frontend developer from Davao City, Philippines. Specializing in React, Next.js, and TypeScript to craft modern, responsive web experiences.",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "JOSEPH.DEV",
-    title: "Joseph Manigo | UI/UX & Frontend Developer",
+    title: "JOSEPH.DEV",
     description:
       "UI/UX designer and frontend developer crafting modern, responsive web experiences with React, Next.js, and TypeScript.",
     images: [
